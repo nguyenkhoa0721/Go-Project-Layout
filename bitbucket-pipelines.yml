@@ -1,8 +1,0 @@
-pipelines:
-  branches:
-    dev:
-      - step:
-          name: Deploy to test
-          deployment: test
-          script:
-            - ssh root@34.87.187.41 'cd multichain-explorer; git pull origin dev; go run cmd/client/main.go dev'
