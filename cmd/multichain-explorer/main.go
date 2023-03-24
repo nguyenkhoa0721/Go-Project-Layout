@@ -2,6 +2,12 @@ package main
 
 import (
 	"context"
+	"net"
+	"os"
+	"os/signal"
+	"syscall"
+	"time"
+
 	_ "github.com/lib/pq"
 	ChainHandler "github.com/nguyenkhoa0721/go-project-layout/internal/chain/handler"
 	"github.com/nguyenkhoa0721/go-project-layout/pkg/common"
@@ -11,11 +17,6 @@ import (
 	"github.com/sirupsen/logrus"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
-	"net"
-	"os"
-	"os/signal"
-	"syscall"
-	"time"
 )
 
 type App struct {
@@ -28,7 +29,7 @@ func NewApp() *App {
 	grpcLogger := grpc.UnaryInterceptor(exception.GrpcException)
 	grpcServer := grpc.NewServer(grpcLogger)
 
-	chainPublicHandler := ChainHandler.NewChainPublicHandler(common.GetCommon())
+	chainPublicHandler := ChainHandler.NewChainPublicHandler()
 	pb.RegisterChainServer(grpcServer, chainPublicHandler)
 
 	reflection.Register(grpcServer)

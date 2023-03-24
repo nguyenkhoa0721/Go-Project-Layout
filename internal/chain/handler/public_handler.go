@@ -2,8 +2,8 @@ package handler
 
 import (
 	"context"
+
 	"github.com/nguyenkhoa0721/go-project-layout/internal/chain/pkg"
-	"github.com/nguyenkhoa0721/go-project-layout/pkg/common"
 	"github.com/nguyenkhoa0721/go-project-layout/pkg/exception"
 	"github.com/nguyenkhoa0721/go-project-layout/pkg/util"
 	pb "github.com/nguyenkhoa0721/grpc/pb"
@@ -12,14 +12,12 @@ import (
 
 type ChainPublicHandler struct {
 	pb.UnimplementedChainServer
-	common  *common.Common
 	service *pkg.ChainService
 }
 
-func NewChainPublicHandler(c *common.Common) *ChainPublicHandler {
+func NewChainPublicHandler() *ChainPublicHandler {
 	return &ChainPublicHandler{
-		common:  c,
-		service: pkg.NewChainService(c),
+		service: pkg.NewChainService(),
 	}
 }
 
