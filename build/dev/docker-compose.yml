@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  api:
+    build:
+      context: ../..
+      dockerfile: ./build/dev/Dockerfile
+      args:
+        BITBUCKET_TOKEN: $BITBUCKET_TOKEN
+    ports:
+      - "8000:8000"
+    command: [ "/app/main" ]

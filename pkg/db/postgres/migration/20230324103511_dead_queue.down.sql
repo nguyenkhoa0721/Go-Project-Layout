@@ -1,0 +1,1 @@
+DROP TABLE IF EXISTS kafka_dead_letter_queues;

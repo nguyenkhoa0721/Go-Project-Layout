@@ -1,0 +1,29 @@
+app:
+  grpcServerAddress: "0.0.0.0:9000"
+
+database:
+  driver: ""
+  host: ""
+  port: 0
+  username: ""
+  password: ""
+  database: ""
+
+mongo:
+  host: ""
+  port: 0
+  username: ""
+  password: ""
+  database: ""
+
+redis:
+  host: ""
+  port: ""
+  password: ""
+
+uuid:
+  shardingId: 1
+  totalReplicateNodes: 2
+
+kafka:
+  brokers: ["0.0.0.0:9091"]
